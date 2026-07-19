@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GT Development — Ground-Up Luxury, South Florida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+<style>
+  :root{
+    --ivory: #F4F1E8;
+    --paper: #EAE4D3;
+    --charcoal: #201D18;
+    --charcoal-2: #383228;
+    --concrete: #A39C8C;
+    --concrete-line: rgba(32,29,24,0.14);
+    --verde: #3E5749;
+    --verde-bright: #5A7566;
+    --bronze: #9C7A45;
+    --bronze-bright: #C6A063;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ivory);
+    color:var(--charcoal);
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--bronze);color:var(--ivory);}
+  a{color:inherit;text-decoration:none;}
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--bronze);
+  }
+  .eyebrow.on-dark{color:var(--bronze-bright);}
+
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:300;letter-spacing:-0.01em;}
+
+  .wrap{max-width:1240px;margin:0 auto;padding-left:4rem;padding-right:4rem;}
+
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1.6rem 3rem;
+    transition:background .4s ease, padding .4s ease, border-color .4s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    background:rgba(244,241,232,0.92);
+    backdrop-filter:blur(10px);
+    padding:1.1rem 3rem;
+    border-bottom:1px solid var(--concrete-line);
+  }
+  .logo{
+    display:flex;align-items:baseline;gap:.5rem;
+    font-family:'Fraunces',serif;font-size:1.3rem;letter-spacing:.02em;
+    color:var(--ivory);
+    transition:color .4s ease;
+  }
+  header.scrolled .logo{color:var(--charcoal);}
+  .logo .gt{font-weight:600;}
+  .logo .rest{font-size:0.95rem;font-weight:300;opacity:.85;}
+  nav ul{display:flex;gap:2.6rem;list-style:none;}
+  nav a{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.68rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ivory);
+    position:relative;padding-bottom:4px;
+    transition:color .4s ease;
+  }
+  header.scrolled nav a{color:var(--charcoal-2);}
+  nav a::after{
+    content:'';position:absolute;left:0;bottom:0;width:0;height:1px;
+    background:var(--bronze-bright);transition:width .25s ease;
+  }
+  nav a:hover::after{width:100%;}
+
+  .hero{
+    position:relative;
+    height:100vh;min-height:640px;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:0 3rem 4.5rem;
+    overflow:hidden;
+    color:var(--ivory);
+  }
+  .hero-photo{
+    position:absolute;inset:0;z-index:0;
+    background:
+      linear-gradient(180deg, rgba(20,18,14,0.25) 0%, rgba(20,18,14,0.65) 100%),
+      url('images/hero-mansion.jpg') center 30%/cover no-repeat;
+  }
+  .hero-photo::after{
+    content:'';position:absolute;inset:0;
+    background-image:linear-gradient(90deg, rgba(244,241,232,0.03) 1px, transparent 1px);
+    background-size:80px 100%;
+    opacity:.25;
+  }
+  .hero-content{position:relative;z-index:1;max-width:1240px;margin:0 auto;width:100%;}
+  .hero h1{
+    font-size:clamp(2.8rem,6vw,5.4rem);
+    line-height:1.02;font-weight:300;
+    margin:0 0 1.6rem;
+    max-width:44rem;
+  }
+  .hero h1 em{font-style:italic;color:var(--bronze-bright);}
+  .hero-sub{
+    font-size:1.05rem;line-height:1.7;max-width:30rem;color:rgba(244,241,232,0.82);
+    margin-bottom:2.2rem;
+  }
+  .scroll-cue{
+    position:absolute;bottom:2rem;right:3rem;z-index:1;
+    font-family:'IBM Plex Mono',monospace;font-size:0.65rem;letter-spacing:.1em;text-transform:uppercase;
+    color:rgba(244,241,232,0.7);
+    display:flex;align-items:center;gap:.6rem;
+  }
+  .scroll-cue .line{width:32px;height:1px;background:rgba(244,241,232,0.5);}
+
+  .stats{background:var(--ivory);padding:4.5rem 0;border-bottom:1px solid var(--concrete-line);}
+  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);}
+  .stat-block{text-align:center;padding:0 1rem;border-right:1px solid var(--concrete-line);}
+  .stat-block:last-child{border-right:none;}
+  .stat-block .n{font-family:'Fraunces',serif;font-size:2.6rem;font-weight:400;color:var(--charcoal);display:block;}
+  .stat-block .l{font-family:'IBM Plex Mono',monospace;font-size:0.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--concrete);margin-top:.4rem;display:block;}
+
+  .vision{padding:8rem 0;}
+  .vision-grid{display:grid;grid-template-columns:0.7fr 1.3fr;gap:4rem;}
+  .vision h2{font-size:clamp(1.9rem,3vw,2.6rem);line-height:1.15;}
+  .vision-copy p{font-size:1.02rem;line-height:1.75;color:var(--charcoal-2);margin-bottom:1.4rem;max-width:36rem;}
+  .vision-copy p.pull{
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.4rem;color:var(--verde);
+    line-height:1.5;margin:2rem 0;max-width:30rem;
+  }
+
+  .media-break{position:relative;height:70vh;min-height:420px;display:flex;align-items:flex-end;margin:0;}
+  .media-break .bg{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(0deg, rgba(20,18,14,0.6) 0%, rgba(20,18,14,0.1) 55%),
+      url('images/waterfront-home.jpg') center 40%/cover no-repeat;
+  }
+  .media-break .caption{position:relative;z-index:1;padding:2.5rem 3rem;color:var(--ivory);}
+  .media-break .caption .eyebrow{color:var(--bronze-bright);margin-bottom:.6rem;display:block;}
+  .media-break h3{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;max-width:28rem;}
+
+  .approach{background:var(--paper);padding:7rem 0;border-bottom:1px solid var(--concrete-line);}
+  .section-head{margin-bottom:3rem;max-width:36rem;}
+  .section-head h2{font-size:clamp(1.9rem,3vw,2.6rem);margin-top:.6rem;}
+  .phase-row{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--concrete-line);}
+  .phase{padding:1.8rem 1.3rem 0 0;border-right:1px solid var(--concrete-line);}
+  .phase:last-child{border-right:none;}
+  .phase .num{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--bronze);}
+  .phase h3{font-size:1.05rem;margin:.8rem 0 .6rem;font-weight:400;}
+  .phase p{font-size:0.85rem;line-height:1.55;color:var(--charcoal-2);}
+  .phase p a{color:var(--verde);border-bottom:1px solid var(--verde);}
+
+  .explore{padding:7rem 0;}
+  .explore-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-top:3rem;background:var(--concrete-line);}
+  .explore-card{position:relative;height:340px;overflow:hidden;background:var(--charcoal);display:flex;align-items:flex-end;padding:2rem;}
+  .explore-card .bg{position:absolute;inset:0;transition:transform .6s ease;background-size:cover;background-position:center;}
+  .explore-card:hover .bg{transform:scale(1.06);}
+  .explore-card::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg, rgba(20,18,14,0.55) 0%, rgba(20,18,14,0.05) 60%);}
+  .explore-card .label{position:relative;z-index:1;color:var(--ivory);}
+  .explore-card .label .eyebrow{color:var(--bronze-bright);display:block;margin-bottom:.5rem;}
+  .explore-card .label h3{font-size:1.4rem;font-weight:300;}
+
+  .capital{background:var(--charcoal);color:var(--ivory);padding:7rem 0;}
+  .capital .section-head h2{color:var(--ivory);}
+  .stack-bars{display:flex;flex-direction:column;gap:1px;margin-top:2.5rem;max-width:44rem;}
+  .stack-row{display:flex;align-items:center;justify-content:space-between;padding:1.3rem 1.6rem;background:var(--charcoal-2);border-left:3px solid var(--concrete);}
+  .stack-row:nth-child(1){border-left-color:var(--bronze-bright);}
+  .stack-row:nth-child(2){border-left-color:var(--verde-bright);}
+  .stack-row:nth-child(3){border-left-color:var(--ivory);}
+  .stack-row .label{font-family:'IBM Plex Mono',monospace;font-size:0.8rem;letter-spacing:.03em;}
+  .stack-row .pct{font-family:'IBM Plex Mono',monospace;font-size:1.05rem;color:var(--concrete);}
+  .capital-note{max-width:34rem;font-size:0.86rem;line-height:1.65;color:var(--concrete);margin-top:2rem;}
+
+  .partners{padding:7rem 0;border-bottom:1px solid var(--concrete-line);}
+  .partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem;}
+  .partner-col{border-top:1px solid var(--concrete-line);padding-top:1.6rem;}
+  .partner-col .cat{font-family:'IBM Plex Mono',monospace;font-size:0.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:1.2rem;}
+  .partner-col ul{list-style:none;}
+  .partner-col li{
+    font-family:'Fraunces',serif;font-size:1.25rem;font-weight:400;
+    padding:0.9rem 0;border-bottom:1px solid var(--concrete-line);
+  }
+  .partner-col li:last-child{border-bottom:none;}
+  .partner-col li .sub{
+    display:block;font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:300;
+    color:var(--charcoal-2);margin-top:.2rem;
+  }
+  .partners-note{font-size:0.8rem;color:var(--concrete);font-style:italic;margin-top:2rem;max-width:36rem;}
+
+  .founders{background:var(--paper);padding:7rem 0;border-top:1px solid var(--concrete-line);border-bottom:1px solid var(--concrete-line);}
+  .founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:3rem;}
+  .founder-card{background:var(--ivory);border:1px solid var(--concrete-line);padding:2.5rem;}
+  .founder-photo{
+    width:64px;height:64px;border-radius:50%;
+    background:linear-gradient(150deg,#8a9584,#3e5749);
+    background-size:cover;background-position:center;
+    margin-bottom:1.4rem;
+  }
+  .founder-card h3{font-size:1.4rem;font-weight:400;margin-bottom:.3rem;}
+  .founder-card .role{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--bronze);margin-bottom:1.2rem;display:block;}
+  .founder-card p.bio{font-size:0.92rem;line-height:1.65;color:var(--charcoal-2);}
+
+  .audience{padding:7rem 0;}
+  .aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:3rem;}
+  .aud-card{border:1px solid var(--concrete-line);padding:2.2rem 1.8rem;transition:transform .25s ease, box-shadow .25s ease;}
+  .aud-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(32,29,24,0.1);}
+  .aud-card h3{font-size:1.25rem;margin:1rem 0 .8rem;font-weight:400;}
+  .aud-card p{font-size:0.87rem;line-height:1.6;color:var(--charcoal-2);margin-bottom:1.2rem;}
+  .aud-card a.link{font-family:'IBM Plex Mono',monospace;font-size:0.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--verde);border-bottom:1px solid var(--verde);padding-bottom:2px;}
+
+  .faq{background:var(--paper);padding:7rem 0;border-top:1px solid var(--concrete-line);}
+  .faq-list{margin-top:2.5rem;border-top:1px solid var(--concrete-line);}
+  .faq-item{border-bottom:1px solid var(--concrete-line);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1.5rem 0;font-family:'Fraunces',serif;font-size:1.05rem;color:var(--charcoal);
+  }
+  .faq-q .plus{font-family:'IBM Plex Mono',monospace;font-size:1.2rem;color:var(--bronze);transition:transform .25s ease;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-item.open .faq-a{max-height:300px;}
+  .faq-a p{font-size:0.9rem;line-height:1.65;color:var(--charcoal-2);padding-bottom:1.5rem;max-width:40rem;}
+
+  .contact{padding:7rem 0 3rem;}
+  .contact-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;}
+  .contact h2{font-size:clamp(1.9rem,3vw,2.5rem);margin-bottom:1.2rem;max-width:22rem;font-weight:300;}
+  .contact p{color:var(--charcoal-2);max-width:28rem;line-height:1.65;margin-bottom:2rem;}
+  .contact-detail{margin-bottom:1.2rem;}
+  .contact-detail .k{font-family:'IBM Plex Mono',monospace;font-size:0.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--concrete);}
+  .contact-detail .v{font-size:1rem;}
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:.06em;text-transform:uppercase;
+    padding:0.95rem 1.6rem;border:1px solid var(--charcoal);transition:all .25s ease;
+  }
+  .btn.solid{background:var(--charcoal);color:var(--ivory);}
+  .btn.solid:hover{background:var(--verde);border-color:var(--verde);}
+  footer{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+    padding-top:3rem;margin-top:3rem;border-top:1px solid var(--concrete-line);
+    font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:var(--concrete);
+  }
+
+  @media (max-width: 960px){
+    header{padding:1.2rem 1.4rem;}
+    nav ul{display:none;}
+    .wrap{padding-left:1.4rem;padding-right:1.4rem;}
+    .hero{padding:0 1.4rem 3rem;}
+    .scroll-cue{right:1.4rem;}
+    .stats-row{grid-template-columns:1fr 1fr;row-gap:2rem;}
+    .vision-grid{grid-template-columns:1fr;gap:2rem;}
+    .phase-row{grid-template-columns:1fr 1fr;}
+    .phase{border-right:none;border-bottom:1px solid var(--concrete-line);padding-bottom:1.5rem;}
+    .explore-grid{grid-template-columns:1fr;}
+    .partners-grid{grid-template-columns:1fr 1fr;}
+    .founders-grid{grid-template-columns:1fr;}
+    .aud-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="logo"><span class="gt">GT</span><span class="rest">Development</span></div>
+  <nav>
+    <ul>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#partners">Partners</a></li>
+      <li><a href="#capital">Capital</a></li>
+      <li><a href="#founders">Founders</a></li>
+      <li><a href="#audience">Who We Serve</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-photo" id="heroPhoto"></div>
+  <div class="hero-content">
+    <h1 id="heroHeadline">Ground-up<br>luxury, built for<br><em>the way South Florida lives.</em></h1>
+    <p class="hero-sub" id="heroSub">GT Development acquires, designs, and builds single-family residences across South Florida's best and most proven submarkets — underwritten with the discipline of a lender and delivered with the eye of a developer.</p>
+  </div>
+  <div class="scroll-cue"><span class="line"></span>Scroll</div>
+</section>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-row" id="statsRow"></div>
+  </div>
+</section>
+
+<section class="vision" id="vision">
+  <div class="wrap">
+    <div class="vision-grid">
+      <div>
+        <p class="eyebrow" id="originEyebrow">Origin</p>
+        <h2 id="originHeadline">An obsession with cars brought us together.</h2>
+      </div>
+      <div class="vision-copy" id="originCopy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="vision" style="padding-top:0;">
+  <div class="wrap">
+    <div class="vision-grid">
+      <div>
+        <p class="eyebrow" id="whoWeAreEyebrow">Who We Are</p>
+        <h2 id="whoWeAreHeadline">A developer that underwrites like a lender.</h2>
+      </div>
+      <div class="vision-copy" id="whoWeAreCopy"></div>
+    </div>
+  </div>
+</section>
+
+<div class="media-break">
+  <div class="bg" id="discoverImage"></div>
+  <div class="caption">
+    <span class="eyebrow" id="discoverEyebrow">Discover</span>
+    <h3 id="discoverHeadline">Contemporary single-family living, positioned for the buyers relocating to it.</h3>
+  </div>
+</div>
+
+<section class="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" id="processEyebrow">The Process</p>
+      <h2 id="processHeadline">From site selection to disposition.</h2>
+    </div>
+    <div class="phase-row" id="phaseRow"></div>
+  </div>
+</section>
+
+<section class="explore" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" id="projectsEyebrow">Projects</p>
+      <h2 id="projectsHeadline">Where we're building.</h2>
+    </div>
+  </div>
+  <div class="explore-grid" id="exploreGrid"></div>
+</section>
+
+<section class="capital" id="capital">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow on-dark" id="capitalEyebrow">Capital Stack</p>
+      <h2 id="capitalHeadline">Equity, debt, and founder capital — arm's-length, every time.</h2>
+    </div>
+    <div class="stack-bars" id="stackBars"></div>
+    <p class="capital-note" id="capitalNote"></p>
+  </div>
+</section>
+
+<section class="partners" id="partners">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" id="partnersEyebrow">Who We Build With</p>
+      <h2 id="partnersHeadline">Partnering with the best in every discipline.</h2>
+    </div>
+    <div class="partners-grid" id="partnersGrid"></div>
+    <p class="partners-note" id="partnersNote"></p>
+  </div>
+</section>
+
+<section class="founders" id="founders">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" id="foundersEyebrow">Founders</p>
+      <h2 id="foundersHeadline">Who's behind it.</h2>
+    </div>
+    <div class="founders-grid" id="foundersGrid"></div>
+  </div>
+</section>
+
+<section class="audience" id="audience">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" id="audienceEyebrow">Who We Serve</p>
+      <h2 id="audienceHeadline">Three doors in, one standard behind all of them.</h2>
+    </div>
+    <div class="aud-grid" id="audGrid"></div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow" id="faqEyebrow">FAQ</p>
+      <h2 id="faqHeadline">Common questions.</h2>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <h2 id="contactHeadline">Let's talk about the next lot.</h2>
+        <p id="contactSub">Whether you're bringing capital, buying the finished home, or building it with us — start here.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="#" id="contactEmail" class="btn solid">info@gtdevelopment.com</a>
+        </div>
+      </div>
+      <div>
+        <div class="contact-detail"><div class="k">Headquarters</div><div class="v" id="contactHQ">1085 NW 62nd St, Miami, FL 33150</div></div>
+        <div class="contact-detail"><div class="k">Markets</div><div class="v" id="contactMarkets">South Florida's Best &amp; Proven</div></div>
+        <div class="contact-detail"><div class="k">Parent Company</div><div class="v" id="contactParent">GT Group</div></div>
+      </div>
+    </div>
+    <footer>
+      <span id="footerCopyright">© 2026 GT Development. A GT Group company.</span>
+      <span id="footerCompanies">GT Private Lending · GT Home Lending · GT Development</span>
+    </footer>
+  </div>
+</section>
+
+<script>
+  // Scroll behavior for header
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  // Very small markdown-ish link renderer: [text](url) -> <a href="url">text</a>
+  function renderInline(str) {
+    if (!str) return '';
+    return str.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  }
+
+  fetch('content.json')
+    .then(r => r.json())
+    .then(c => {
+      // Hero
+      document.getElementById('heroPhoto').style.backgroundImage =
+        `linear-gradient(180deg, rgba(20,18,14,0.25) 0%, rgba(20,18,14,0.65) 100%), url('${c.hero.image}')`;
+      document.getElementById('heroHeadline').innerHTML =
+        `${c.hero.headlineLine1}<br>${c.hero.headlineLine2}<br><em>${c.hero.headlineEmphasis}</em>`;
+      document.getElementById('heroSub').textContent = c.hero.sub;
+
+      // Stats
+      document.getElementById('statsRow').innerHTML = c.stats.map(s => `
+        <div class="stat-block"><span class="n">${s.number}</span><span class="l">${s.label}</span></div>
+      `).join('');
+
+      // Origin
+      document.getElementById('originEyebrow').textContent = c.origin.eyebrow;
+      document.getElementById('originHeadline').textContent = c.origin.headline;
+      document.getElementById('originCopy').innerHTML = `
+        <p>${c.origin.paragraph1}</p>
+        <p class="pull">${c.origin.pullQuote}</p>
+        <p>${c.origin.paragraph2}</p>
+      `;
+
+      // Who We Are
+      document.getElementById('whoWeAreEyebrow').textContent = c.whoWeAre.eyebrow;
+      document.getElementById('whoWeAreHeadline').textContent = c.whoWeAre.headline;
+      document.getElementById('whoWeAreCopy').innerHTML = `
+        <p>${c.whoWeAre.paragraph1}</p>
+        <p>${c.whoWeAre.paragraph2}</p>
+      `;
+
+      // Discover / media break
+      document.getElementById('discoverImage').style.backgroundImage =
+        `linear-gradient(0deg, rgba(20,18,14,0.6) 0%, rgba(20,18,14,0.1) 55%), url('${c.discover.image}')`;
+      document.getElementById('discoverEyebrow').textContent = c.discover.eyebrow;
+      document.getElementById('discoverHeadline').textContent = c.discover.headline;
+
+      // Process phases
+      document.getElementById('processEyebrow').textContent = c.process.eyebrow;
+      document.getElementById('processHeadline').textContent = c.process.headline;
+      document.getElementById('phaseRow').innerHTML = c.process.phases.map(p => `
+        <div class="phase">
+          <span class="num">${p.number}</span>
+          <h3>${p.title}</h3>
+          <p>${renderInline(p.description)}</p>
+        </div>
+      `).join('');
+
+      // Projects
+      document.getElementById('projectsEyebrow').textContent = c.projects.eyebrow;
+      document.getElementById('projectsHeadline').textContent = c.projects.headline;
+      document.getElementById('exploreGrid').innerHTML = c.projects.items.map(p => `
+        <a class="explore-card" href="#capital">
+          <div class="bg" style="background-image:url('${p.image}')"></div>
+          <div class="label"><span class="eyebrow">${p.region}</span><h3>${p.name}</h3></div>
+        </a>
+      `).join('');
+
+      // Capital
+      document.getElementById('capitalEyebrow').textContent = c.capital.eyebrow;
+      document.getElementById('capitalHeadline').textContent = c.capital.headline;
+      document.getElementById('stackBars').innerHTML = c.capital.rows.map(r => `
+        <div class="stack-row"><span class="label">${r.label}</span><span class="pct">${r.detail}</span></div>
+      `).join('');
+      document.getElementById('capitalNote').textContent = c.capital.note;
+
+      // Partners
+      document.getElementById('partnersEyebrow').textContent = c.partners.eyebrow;
+      document.getElementById('partnersHeadline').textContent = c.partners.headline;
+      document.getElementById('partnersGrid').innerHTML = c.partners.categories.map(cat => `
+        <div class="partner-col">
+          <span class="cat">${cat.category}</span>
+          <ul>${cat.items.map(i => `<li>${i.name}<span class="sub">${i.sub}</span></li>`).join('')}</ul>
+        </div>
+      `).join('');
+      document.getElementById('partnersNote').textContent = c.partners.note;
+
+      // Founders
+      document.getElementById('foundersEyebrow').textContent = c.founders.eyebrow;
+      document.getElementById('foundersHeadline').textContent = c.founders.headline;
+      document.getElementById('foundersGrid').innerHTML = c.founders.people.map(p => `
+        <div class="founder-card">
+          <div class="founder-photo" style="${p.photo ? `background-image:url('${p.photo}')` : ''}"></div>
+          <h3>${p.name}</h3>
+          <span class="role">${p.role}</span>
+          <p class="bio">${p.bio}</p>
+        </div>
+      `).join('');
+
+      // Audience
+      document.getElementById('audienceEyebrow').textContent = c.audience.eyebrow;
+      document.getElementById('audienceHeadline').textContent = c.audience.headline;
+      document.getElementById('audGrid').innerHTML = c.audience.cards.map(a => `
+        <div class="aud-card">
+          <p class="eyebrow">${a.eyebrow}</p>
+          <h3>${a.title}</h3>
+          <p>${a.description}</p>
+          <a href="#contact" class="link">${a.linkText}</a>
+        </div>
+      `).join('');
+
+      // FAQ
+      document.getElementById('faqEyebrow').textContent = c.faq.eyebrow;
+      document.getElementById('faqHeadline').textContent = c.faq.headline;
+      document.getElementById('faqList').innerHTML = c.faq.items.map(f => `
+        <div class="faq-item">
+          <button class="faq-q">${f.question}<span class="plus">+</span></button>
+          <div class="faq-a"><p>${f.answer}</p></div>
+        </div>
+      `).join('');
+      document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.parentElement;
+          const wasOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+          if (!wasOpen) item.classList.add('open');
+        });
+      });
+
+      // Contact
+      document.getElementById('contactHeadline').textContent = c.contact.headline;
+      document.getElementById('contactSub').textContent = c.contact.sub;
+      document.getElementById('contactEmail').textContent = c.contact.email;
+      document.getElementById('contactEmail').href = `mailto:${c.contact.email}`;
+      document.getElementById('contactHQ').textContent = c.contact.headquarters;
+      document.getElementById('contactMarkets').textContent = c.contact.markets;
+      document.getElementById('contactParent').textContent = c.contact.parentCompany;
+
+      // Footer
+      document.getElementById('footerCopyright').textContent = c.footer.copyright;
+      document.getElementById('footerCompanies').textContent = c.footer.companies;
+    })
+    .catch(err => console.error('Could not load content.json', err));
+</script>
+
+</body>
+</html>

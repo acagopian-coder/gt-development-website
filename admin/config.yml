@@ -1,0 +1,182 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "images"
+
+publish_mode: simple
+
+collections:
+  - name: "content"
+    label: "Site Content"
+    files:
+      - file: "content.json"
+        label: "GT Development Website Content"
+        name: "site"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Hero Image", name: "image", widget: "image"}
+              - {label: "Headline Line 1", name: "headlineLine1", widget: "string"}
+              - {label: "Headline Line 2", name: "headlineLine2", widget: "string"}
+              - {label: "Headline Emphasis (italic, last line)", name: "headlineEmphasis", widget: "string"}
+              - {label: "Subheading", name: "sub", widget: "text"}
+
+          - label: "Stats Row"
+            name: "stats"
+            widget: "list"
+            fields:
+              - {label: "Number", name: "number", widget: "string"}
+              - {label: "Label", name: "label", widget: "string"}
+
+          - label: "Origin Section"
+            name: "origin"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Headline", name: "headline", widget: "string"}
+              - {label: "Paragraph 1", name: "paragraph1", widget: "text"}
+              - {label: "Pull Quote", name: "pullQuote", widget: "text"}
+              - {label: "Paragraph 2", name: "paragraph2", widget: "text"}
+
+          - label: "Who We Are Section"
+            name: "whoWeAre"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Headline", name: "headline", widget: "string"}
+              - {label: "Paragraph 1", name: "paragraph1", widget: "text"}
+              - {label: "Paragraph 2", name: "paragraph2", widget: "text"}
+
+          - label: "Discover / Media Break"
+            name: "discover"
+            widget: "object"
+            fields:
+              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Headline", name: "headline", widget: "text"}
+
+          - label: "The Process"
+            name: "process"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Headline", name: "headline", widget: "string"}
+              - label: "Phases"
+                name: "phases"
+                widget: "list"
+                fields:
+                  - {label: "Number (e.g. 01)", name: "number", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "description", widget: "text", hint: "To add a link, use: [Link Text](https://url.com)"}
+
+          - label: "Projects"
+            name: "projects"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Headline", name: "headline", widget: "string"}
+              - label: "Project Locations"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Region", name: "region", widget: "string"}
+                  - {label: "Name", name: "name", widget: "string"}
+                  - {label: "Photo", name: "image", widget: "image"}
+
+          - label: "Capital Stack"
+            name: "capital"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Headline", name: "headline", widget: "string"}
+              - label: "Stack Rows"
+                name: "rows"
+                widget: "list"
+                fields:
+                  - {label: "Label", name: "label", widget: "string"}
+                  - {label: "Detail", name: "detail", widget: "string"}
+              - {label: "Note", name: "note", widget: "text"}
+
+          - label: "Who We Build With (Partners)"
+            name: "partners"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Headline", name: "headline", widget: "string"}
+              - label: "Categories"
+                name: "categories"
+                widget: "list"
+                fields:
+                  - {label: "Category Name", name: "category", widget: "string"}
+                  - label: "Items"
+                    name: "items"
+                    widget: "list"
+                    fields:
+                      - {label: "Name", name: "name", widget: "string"}
+                      - {label: "Subtitle", name: "sub", widget: "string"}
+              - {label: "Note", name: "note", widget: "text"}
+
+          - label: "Founders"
+            name: "founders"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Headline", name: "headline", widget: "string"}
+              - label: "People"
+                name: "people"
+                widget: "list"
+                fields:
+                  - {label: "Name", name: "name", widget: "string"}
+                  - {label: "Role", name: "role", widget: "string"}
+                  - {label: "Bio", name: "bio", widget: "text"}
+                  - {label: "Photo", name: "photo", widget: "image", required: false}
+
+          - label: "Who We Serve"
+            name: "audience"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Headline", name: "headline", widget: "string"}
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "description", widget: "text"}
+                  - {label: "Link Text", name: "linkText", widget: "string"}
+
+          - label: "FAQ"
+            name: "faq"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow", name: "eyebrow", widget: "string"}
+              - {label: "Headline", name: "headline", widget: "string"}
+              - label: "Questions"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Question", name: "question", widget: "string"}
+                  - {label: "Answer", name: "answer", widget: "text"}
+
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - {label: "Headline", name: "headline", widget: "string"}
+              - {label: "Subheading", name: "sub", widget: "text"}
+              - {label: "Email", name: "email", widget: "string"}
+              - {label: "Headquarters", name: "headquarters", widget: "string"}
+              - {label: "Markets", name: "markets", widget: "string"}
+              - {label: "Parent Company", name: "parentCompany", widget: "string"}
+
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - {label: "Copyright Line", name: "copyright", widget: "string"}
+              - {label: "Companies Line", name: "companies", widget: "string"}
