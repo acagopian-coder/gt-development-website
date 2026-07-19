@@ -1,22 +1,77 @@
 {
-  "hero": {
-    "image": "images/hero-mansion.jpg",
-    "headlineLine1": "Ground-up",
-    "headlineLine2": "luxury, built for",
-    "headlineEmphasis": "the way South Florida lives.",
-    "sub": "GT Development acquires, designs, and builds single-family residences across South Florida's best and most proven submarkets — underwritten with the discipline of a lender and delivered with the eye of a developer."
+  "contact": {
+    "headline": "Let's talk about the next lot.",
+    "sub": "Whether you're bringing capital, buying the finished home, or building it with us — start here.",
+    "email": "info@gtdevelopment.com",
+    "headquarters": "1085 NW 62nd St, Miami, FL 33150",
+    "markets": "South Florida's Best & Proven",
+    "parentCompany": "GT Group"
   },
-  "stats": [
-    { "number": "$4–20M", "label": "Exit Range" },
-    { "number": "15–30%", "label": "Target Return on Investment" },
-    { "number": "5,000 SF", "label": "Average Size Residence" }
-  ],
+  "audience": {
+    "eyebrow": "Who We Serve",
+    "headline": "Three doors in, one standard behind all of them.",
+    "cards": [
+      {
+        "eyebrow": "For Investors",
+        "title": "Equity & Capital Partners",
+        "description": "Deal-by-deal equity into single-purpose project LLCs, underwritten against comps before capital is called.",
+        "linkText": "Request the deal memo →"
+      },
+      {
+        "eyebrow": "For Buyers",
+        "title": "Move-In Ready Residences",
+        "description": "Contemporary single-family homes built for the way relocating buyers actually live — walkable, low-maintenance, detail-driven.",
+        "linkText": "See what's coming →"
+      },
+      {
+        "eyebrow": "For Partners",
+        "title": "Architects, Trades & Brokers",
+        "description": "A lean, contracted model — we bring in the right team per project rather than carrying fixed overhead.",
+        "linkText": "Introduce yourself →"
+      }
+    ]
+  },
+  "founders": {
+    "eyebrow": "Founders",
+    "headline": "Who's behind it.",
+    "people": [
+      {
+        "name": "Alexis Agopian",
+        "role": "Co-Founder",
+        "bio": "Mini bio pending — background, prior ventures, and role at GT Development go here."
+      },
+      {
+        "name": "Flavio Faillace",
+        "role": "Co-Founder",
+        "bio": "Mini bio pending — background, prior ventures, and role at GT Development go here."
+      }
+    ]
+  },
   "origin": {
     "eyebrow": "Origin",
     "headline": "An obsession with cars brought us together.",
     "paragraph1": "Alexis and Flavio met through the same thing that's driven both of them for decades — an obsession with cars, racing, and the pursuit of perfection down to the smallest detail. It's a world where nothing is left to chance: every line, every tolerance, every component considered on purpose.",
     "pullQuote": "After years running separate businesses, that shared standard was reason enough to build something together.",
     "paragraph2": "GT Development is what happens when that obsession leaves the garage. The same discipline that goes into perfecting a car — precision, craftsmanship, zero tolerance for shortcuts — is what we bring to every home we design and build."
+  },
+  "capital": {
+    "eyebrow": "Capital Stack",
+    "headline": "Equity, debt, and founder capital — arm's-length, every time.",
+    "rows": [
+      {
+        "label": "Investor Equity",
+        "detail": "Junior / Pref Return"
+      },
+      {
+        "label": "Construction Debt — GT Private Lending & Similar Lenders",
+        "detail": "Market Terms"
+      },
+      {
+        "label": "Founder Capital",
+        "detail": "First-Loss"
+      }
+    ],
+    "note": "Where GT Private Lending finances a GT Development project, it does so on the same rate, leverage, and underwriting terms it would extend to any third-party borrower — disclosed to GT Private Lending's capital partners as a related-party transaction. Same tolerance, no exceptions."
   },
   "whoWeAre": {
     "eyebrow": "Who We Are",
@@ -29,97 +84,168 @@
     "eyebrow": "Discover",
     "headline": "Contemporary single-family living, positioned for the buyers relocating to it."
   },
-  "process": {
-    "eyebrow": "The Process",
-    "headline": "From site selection to disposition.",
-    "phases": [
-      { "number": "01", "title": "Site Selection", "description": "Residual land value modeling across target submarkets before an offer is made." },
-      { "number": "02", "title": "Underwriting & Capital", "description": "All-in cost and exit pricing stress-tested against a 15–20% margin floor." },
-      { "number": "03", "title": "Design & Permitting", "description": "Contemporary architecture calibrated to the buyer profile in each submarket, interiors developed alongside [Avakian Interiors](https://www.avakianinteriors.com)." },
-      { "number": "04", "title": "Construction", "description": "Single-purpose LLC, contracted trades, draw schedule managed to the loan." },
-      { "number": "05", "title": "Disposition", "description": "Listed through local luxury specialists at completion, or pre-sold where it fits." }
-    ]
-  },
-  "projects": {
-    "eyebrow": "Projects",
-    "headline": "Where we're building.",
-    "items": [
-      { "region": "Miami-Dade", "name": "Skylake", "image": "images/hero-mansion.jpg" },
-      { "region": "Miami-Dade", "name": "Miami Shores", "image": "images/waterfront-home.jpg" },
-      { "region": "Miami-Dade", "name": "Pinecrest", "image": "images/modern-night.jpg" },
-      { "region": "Miami-Dade", "name": "Design District", "image": "images/miami-skyline.jpg" },
-      { "region": "Broward", "name": "Hollywood", "image": "images/miami-causeway.jpg" }
-    ]
-  },
-  "capital": {
-    "eyebrow": "Capital Stack",
-    "headline": "Equity, debt, and founder capital — arm's-length, every time.",
-    "rows": [
-      { "label": "Investor Equity", "detail": "Junior / Pref Return" },
-      { "label": "Construction Debt — GT Private Lending & Similar Lenders", "detail": "Market Terms" },
-      { "label": "Founder Capital", "detail": "First-Loss" }
-    ],
-    "note": "Where GT Private Lending finances a GT Development project, it does so on the same rate, leverage, and underwriting terms it would extend to any third-party borrower — disclosed to GT Private Lending's capital partners as a related-party transaction. Same tolerance, no exceptions."
-  },
   "partners": {
     "eyebrow": "Who We Build With",
     "headline": "Partnering with the best in every discipline.",
     "categories": [
-      { "category": "Architecture", "items": [
-        { "name": "Kobi Karp", "sub": "Architecture & Interior Design" },
-        { "name": "Arquitectonica", "sub": "Global Design Practice" },
-        { "name": "SDH Studio", "sub": "Architecture + Design, Miami" }
-      ]},
-      { "category": "Interiors", "items": [
-        { "name": "Avakian Interiors", "sub": "Full-Service Interior Design, Miami Beach" }
-      ]},
-      { "category": "Construction", "items": [
-        { "name": "Top-Tier General Contractors", "sub": "Vetted per project, Miami-Dade & Palm Beach" }
-      ]},
-      { "category": "Brokerage", "items": [
-        { "name": "The Chad Carroll Group", "sub": "Compass — Mid to Ultra-Luxury Listings" }
-      ]}
+      {
+        "category": "Architecture",
+        "items": [
+          {
+            "name": "Kobi Karp",
+            "sub": "Architecture & Interior Design"
+          },
+          {
+            "name": "Arquitectonica",
+            "sub": "Global Design Practice"
+          },
+          {
+            "name": "SDH Studio",
+            "sub": "Architecture + Design, Miami"
+          }
+        ]
+      },
+      {
+        "category": "Interiors",
+        "items": [
+          {
+            "name": "Avakian Interiors",
+            "sub": "Full-Service Interior Design, Miami Beach"
+          }
+        ]
+      },
+      {
+        "category": "Construction",
+        "items": [
+          {
+            "name": "Top-Tier General Contractors",
+            "sub": "Vetted per project, Miami-Dade & Palm Beach"
+          }
+        ]
+      },
+      {
+        "category": "Brokerage",
+        "items": [
+          {
+            "name": "The Chad Carroll Group",
+            "sub": "Compass — Mid to Ultra-Luxury Listings"
+          }
+        ]
+      }
     ],
     "note": "Partnerships confirmed on a per-project basis; firm engagement varies by site and phase."
   },
-  "founders": {
-    "eyebrow": "Founders",
-    "headline": "Who's behind it.",
-    "people": [
-      { "name": "Alexis Agopian", "role": "Co-Founder", "bio": "Mini bio pending — background, prior ventures, and role at GT Development go here." },
-      { "name": "Flavio Faillace", "role": "Co-Founder", "bio": "Mini bio pending — background, prior ventures, and role at GT Development go here." }
-    ]
-  },
-  "audience": {
-    "eyebrow": "Who We Serve",
-    "headline": "Three doors in, one standard behind all of them.",
-    "cards": [
-      { "eyebrow": "For Investors", "title": "Equity & Capital Partners", "description": "Deal-by-deal equity into single-purpose project LLCs, underwritten against comps before capital is called.", "linkText": "Request the deal memo →" },
-      { "eyebrow": "For Buyers", "title": "Move-In Ready Residences", "description": "Contemporary single-family homes built for the way relocating buyers actually live — walkable, low-maintenance, detail-driven.", "linkText": "See what's coming →" },
-      { "eyebrow": "For Partners", "title": "Architects, Trades & Brokers", "description": "A lean, contracted model — we bring in the right team per project rather than carrying fixed overhead.", "linkText": "Introduce yourself →" }
+  "process": {
+    "eyebrow": "The Process",
+    "headline": "From site selection to disposition.",
+    "phases": [
+      {
+        "number": "01",
+        "title": "Site Selection",
+        "description": "Residual land value modeling across target submarkets before an offer is made."
+      },
+      {
+        "number": "02",
+        "title": "Underwriting & Capital",
+        "description": "All-in cost and exit pricing stress-tested against a 15–20% margin floor."
+      },
+      {
+        "number": "03",
+        "title": "Design & Permitting",
+        "description": "Contemporary architecture calibrated to the buyer profile in each submarket, interiors developed alongside [Avakian Interiors](https://www.avakianinteriors.com)."
+      },
+      {
+        "number": "04",
+        "title": "Construction",
+        "description": "Single-purpose LLC, contracted trades, draw schedule managed to the loan."
+      },
+      {
+        "number": "05",
+        "title": "Disposition",
+        "description": "Listed through local luxury specialists at completion, or pre-sold where it fits."
+      }
     ]
   },
   "faq": {
     "eyebrow": "FAQ",
     "headline": "Common questions.",
     "items": [
-      { "question": "What makes GT Development different from a typical spec builder?", "answer": "Every site is underwritten the way a private lender underwrites a loan — real construction costs, real comps, real exit pricing — before we ever make an offer, not after." },
-      { "question": "Which markets do you build in?", "answer": "Miami-Dade and Palm Beach counties, targeting single-family lots that support a $3M–$10M finished sale price." },
-      { "question": "How is a project financed?", "answer": "A mix of investor equity, construction debt from GT Private Lending or comparable lenders on arm's-length terms, and founder capital in first-loss position." },
-      { "question": "Can I invest in a specific project?", "answer": "Yes — capital comes in deal-by-deal into a single-purpose project LLC rather than a blind-pool fund, so you see the underwriting on the specific site before committing." },
-      { "question": "Is GT Development related to GT Private Lending?", "answer": "Both are part of GT Group. When GT Private Lending finances a GT Development project, it's on the same terms it would offer any outside borrower, disclosed as a related-party transaction." }
+      {
+        "question": "What makes GT Development different from a typical spec builder?",
+        "answer": "Every site is underwritten the way a private lender underwrites a loan — real construction costs, real comps, real exit pricing — before we ever make an offer, not after."
+      },
+      {
+        "question": "Which markets do you build in?",
+        "answer": "Miami-Dade and Palm Beach counties, targeting single-family lots that support a $3M–$10M finished sale price."
+      },
+      {
+        "question": "How is a project financed?",
+        "answer": "A mix of investor equity, construction debt from GT Private Lending or comparable lenders on arm's-length terms, and founder capital in first-loss position."
+      },
+      {
+        "question": "Can I invest in a specific project?",
+        "answer": "Yes — capital comes in deal-by-deal into a single-purpose project LLC rather than a blind-pool fund, so you see the underwriting on the specific site before committing."
+      },
+      {
+        "question": "Is GT Development related to GT Private Lending?",
+        "answer": "Both are part of GT Group. When GT Private Lending finances a GT Development project, it's on the same terms it would offer any outside borrower, disclosed as a related-party transaction."
+      }
     ]
   },
-  "contact": {
-    "headline": "Let's talk about the next lot.",
-    "sub": "Whether you're bringing capital, buying the finished home, or building it with us — start here.",
-    "email": "info@gtdevelopment.com",
-    "headquarters": "1085 NW 62nd St, Miami, FL 33150",
-    "markets": "South Florida's Best & Proven",
-    "parentCompany": "GT Group"
+  "projects": {
+    "eyebrow": "Projects",
+    "headline": "Where we're building.",
+    "items": [
+      {
+        "region": "Miami-Dade",
+        "name": "Skylake",
+        "image": "images/hero-mansion.jpg"
+      },
+      {
+        "region": "Miami-Dade",
+        "name": "Miami Shores",
+        "image": "images/waterfront-home.jpg"
+      },
+      {
+        "region": "Miami-Dade",
+        "name": "Pinecrest",
+        "image": "images/modern-night.jpg"
+      },
+      {
+        "region": "Miami-Dade",
+        "name": "Design District",
+        "image": "images/miami-skyline.jpg"
+      },
+      {
+        "region": "Broward",
+        "name": "Hollywood",
+        "image": "images/miami-causeway.jpg"
+      }
+    ]
+  },
+  "hero": {
+    "image": "images/hero-mansion.jpg",
+    "headlineLine1": "Ground-up",
+    "headlineLine2": "luxury, built for",
+    "headlineEmphasis": "the way South Florida vibrates.",
+    "sub": "GT Development acquires, designs, and builds single-family residences across South Florida's best and most proven submarkets — underwritten with the discipline of a lender and delivered with the eye of a developer."
   },
   "footer": {
     "copyright": "© 2026 GT Development. A GT Group company.",
     "companies": "GT Private Lending · GT Home Lending · GT Development"
-  }
+  },
+  "stats": [
+    {
+      "number": "$4–20M",
+      "label": "Exit Range"
+    },
+    {
+      "number": "15–30%",
+      "label": "Target Return on Investment"
+    },
+    {
+      "number": "5,000 SF",
+      "label": "Average Size Residence"
+    }
+  ]
 }
